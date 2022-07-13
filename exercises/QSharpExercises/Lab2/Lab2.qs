@@ -33,8 +33,7 @@ namespace Lab2 {
     operation Exercise1 (qubitA : Qubit, qubitB : Qubit) : Unit {
         // Hint: you can do this with a single statement, using one gate.
 
-        // TODO
-        fail "Not implemented.";
+        SWAP(qubitA,qubitB);
     }
 
 
@@ -72,7 +71,14 @@ namespace Lab2 {
     /// This will test your combined knowledge of arrays and multi-qubit gates.
     operation Exercise2 (register : Qubit[]) : Unit {
         // TODO
-        fail "Not implemented.";
+
+        let len = Length(register);
+
+        for i in 0..len/2-1 {
+            if(i!=len-1-i){
+                SWAP(register[i],register[len-1-i]);
+            }
+        }
     }
 
 
@@ -107,8 +113,21 @@ namespace Lab2 {
         // 1/√2(|00> + |11>), then build the final state for each register 
         // from there.
 
-        // TODO
-        fail "Not implemented.";
+        for register in registers { //Put each register into 1/√2(|00> + |11>) state
+            H(register[0]);
+            CNOT(register[0],register[1]);
+        }
+
+        //Leave the first register alone
+
+        CZ(registers[1][0],registers[1][1]); //Controlled Z will turn the second term into -|11>
+
+        X(registers[2][1]); //Flip the second bit to get |01> + |10>
+
+        CZ(registers[3][0],registers[3][1]);
+        X(registers[3][1]); //Combination of two previous operations
+
+
     }
 
 
@@ -135,7 +154,11 @@ namespace Lab2 {
     /// with more than two qubits.
     operation Exercise4 (register : Qubit[]) : Unit {
         // TODO
-        fail "Not implemented.";
+        
+        H(register[0]);
+        for i in 0..Length(register) - 2{
+            CNOT(register[i],register[i+1]);
+        } //?
     }
 
 
@@ -154,6 +177,11 @@ namespace Lab2 {
     /// The qubit register. It is in the state |00000>.
     operation Exercise5 (register : Qubit[]) : Unit {
         // TODO
-        fail "Not implemented.";
+
+        X(register[1]);                 // |0100>
+        H(register[2]);                 // 1/√2(|0100> + |0110>)
+        CNOT(register[2], register[3]); // 1/√2(|0100> + |0111>)
+        X(register[3]);                 // 1/√2(|0101> + |0110>)
+        CZ(register[1], register[2]);   // 1/√2(|0101> - |0110>)
     }
 }

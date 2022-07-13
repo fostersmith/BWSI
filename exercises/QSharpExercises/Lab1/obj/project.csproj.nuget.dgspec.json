@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\project.csproj": {}
+    "d:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\project.csproj": {}
   },
   "projects": {
-    "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\project.csproj": {
+    "d:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\project.csproj",
+        "projectUniqueName": "d:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\project.csproj",
         "projectName": "project",
-        "projectPath": "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\project.csproj",
+        "projectPath": "d:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\project.csproj",
         "packagesPath": "C:\\Users\\Foster\\.nuget\\packages\\",
-        "outputPath": "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\obj\\",
+        "outputPath": "d:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Foster\\AppData\\Roaming\\NuGet\\NuGet.Config",
