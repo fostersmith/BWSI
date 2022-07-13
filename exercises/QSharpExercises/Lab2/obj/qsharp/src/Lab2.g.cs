@@ -300,7 +300,7 @@ namespace Lab2
             set;
         }
 
-        protected IUnitary<(Qubit,Qubit)> Microsoft__Quantum__Canon__CZ
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__Z
         {
             get;
             set;
@@ -318,7 +318,7 @@ namespace Lab2
 #line 184 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab2\\Lab2.qs"
             Microsoft__Quantum__Intrinsic__X.Apply(register[3L]);
 #line 185 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab2\\Lab2.qs"
-            Microsoft__Quantum__Canon__CZ.Apply((register[1L], register[2L]));
+            Microsoft__Quantum__Intrinsic__Z.Apply(register[2L]);
 #line hidden
             return QVoid.Instance;
         }
@@ -329,7 +329,7 @@ namespace Lab2
             this.Microsoft__Quantum__Intrinsic__X = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.X));
             this.Microsoft__Quantum__Intrinsic__H = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.H));
             this.Microsoft__Quantum__Intrinsic__CNOT = this.__Factory__.Get<IUnitary<(Qubit,Qubit)>>(typeof(global::Microsoft.Quantum.Intrinsic.CNOT));
-            this.Microsoft__Quantum__Canon__CZ = this.__Factory__.Get<IUnitary<(Qubit,Qubit)>>(typeof(global::Microsoft.Quantum.Canon.CZ));
+            this.Microsoft__Quantum__Intrinsic__Z = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.Z));
         }
 
         public override IApplyData __DataIn__(IQArray<Qubit> data) => data;

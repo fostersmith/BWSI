@@ -182,6 +182,6 @@ namespace Lab2 {
         H(register[2]);                 // 1/√2(|0100> + |0110>)
         CNOT(register[2], register[3]); // 1/√2(|0100> + |0111>)
         X(register[3]);                 // 1/√2(|0101> + |0110>)
-        CZ(register[1], register[2]);   // 1/√2(|0101> - |0110>)
+        Z(register[2]);   // 1/√2(|0101> - |0110>)
     }
 }
