@@ -168,7 +168,7 @@ namespace QSharpExercises.Tests.Lab3 {
 
     @Test("QuantumSimulator")
     operation Challenge3Test () : Unit {
-        let _ = "use qubits = Qubit[3];
+        use qubits = Qubit[3];
 
         Challenge3(qubits);
 
@@ -180,10 +180,10 @@ namespace QSharpExercises.Tests.Lab3 {
         H(qubits[0]);
         X(qubits[0]);
 
-        AssertAllZero(qubits);";
-
-        let qubits = Challenge3Tester();
         AssertAllZero(qubits);
+
+        //let qubits = Challenge3Tester();
+        //AssertAllZero(qubits);
     }
 
 

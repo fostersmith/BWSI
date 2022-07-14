@@ -185,9 +185,8 @@ namespace Lab3 {
         // use that information to flip the phase of the |110> state.
 
         // Set to |+++>
-        for qubit in register{
-            H(qubit);
-        }
+        ApplyToEach(H, register);
+
         Controlled Z(register[0..1],register[2]);   // +|111> -> -|111>
         X(register[2]);                             // -|111> -> -|110>,  +|110> -> +|111>
 
@@ -219,7 +218,7 @@ namespace Lab3 {
         //      let newArray = [someQubit];
 
         H(register[0]);                             // 1/√2(|00> + |10>)
-        Controlled H(register[0..0], register[1]);  // 1/√2|00> + 1/2(|10> + |11>)
+        Controlled H([register[0]], register[1]);  // 1/√2|00> + 1/2(|10> + |11>)
     
         //Would this even work?
     }
@@ -249,13 +248,12 @@ namespace Lab3 {
         // without using an ancilla qubit.
 
         H(register[0]);                             // 1/√2(|000> + |100>)
-        Controlled H(register[0..0],register[1]);   // 1/√2*|000> + 1/2(|100> + |110>)
+        Controlled H([register[0]],register[1]);    // 1/√2*|000> + 1/2(|100> + |110>)
         CNOT(register[1], register[2]);             // 1/√2*|000> + 1/2(|100> + |111>)
         Controlled Z(register[0..1], register[2]);  // 1/√2*|000> + 1/2(|100> - |111>)
         CX(register[0], register[1]);               // 1/√2*|000> + 1/2(|110> - |101>)
         CX(register[0], register[2]);               // 1/√2*|000> + 1/2(|111> - |100>)
     
-        //This is most definitely the wrong way
     }
 
 
@@ -368,35 +366,32 @@ namespace Lab3 {
 
         //            000, 001, 010, 011, 100, 101, 110, 111
         // Initial = [0,   1/√2,1,   1/√2,0,  -1/√2,-1, -1/√2]
-        // To Normalize: First sum absolute values. Then each item = sqrt(|n/sum|)*Sign(n)
-        // Sum = 4*(1/√2) + 2*1 = 4/√2+2√2/√2 = (4+2√2)/√2
-        // Normalized Val of 1:    √(√2/(4+2√2)) (a)
-        // Normalized Val of 1/√2: √(1/(4+2√2))  (b)
+        // To Normalize: Find magnitude of vector of states, divide each by that
+        // Magnitude = 2
+        // Normalized Val of 1:    a = 1/2
+        // Normalized Val of 1/√2: b = 1/2√2 = √2/4
         // Fully Normalized: [0, b, a, b, 0, -b, -a, -b]
         // Goal: 0*|000> + b*|001> + a*|010> + b*|011> + 0*|100> - b*|101> - a*|110> - b*|111>
-        // 0(|000>+|100>) + a(|010>-|110>) + b(|001>+|011>-|101>-|111>)
-        // Approach: First rotate psi2 to have a zero probability of √2/(4+2√2)*2 (our 1 and -1 will be here, the zeros are ignored)
-        // Split psi2==0 with CCH(!psi2, psi0, psi1)
-        // CH(psi2, psi0)
-        // CH(psi2, psi1)
+        //  = 0(|000>+|100>) + 1/2(|010>-|110>) + √2/4(|001>+|011>-|101>-|111>)
+        //  = 1/2(|010>-|110>) + √2/4(|001>+|011>-|101>-|111>)
 
-        //Combined prob of 1s =  2a^2 = 2(√(√2/(4+2√2)))^2 = 2(√2/(4+2√2)) = 2√2/(4+2√2) = 2√2/2(2+√2)  = 2/(2+√2). Take square root to get the amplitude
-        let theta = 2.0*ArcSin(Sqrt( Sqrt(2.0)/(2.0+Sqrt(2.0)) ));
-        Ry(theta, register[2]);                 // √(4b^2)|000> + √(2a^2)|001>  - Now the prob of the last bit being 1 == 1 & -1's combined amplitudes
-        CNOT(register[2],register[1]);          // √(4b^2)|000> + √(2a^2)|011>
-        Controlled H([register[2]],register[0]);// √(4b^2)|000> + a(|011>+|111>)
-        X(register[2]);                         // √(4b^2)|001> + a(|010>+|110>)
+        //Combined prob of 1s =  2a^2 = 2(√(√2/(4+2√2)))^2 = 2(√2/(4+2√2)) = 2√2/(4+2√2) = 2√2/2(2+√2)  = 2/(2+√2) = (2-√2)/3. Take square root to get the amplitude
+        //let theta = 2.0*ArcSin( Sqrt(2.0)/2.0 );
+        //Ry(theta, register[2]);               // 1/√2|000> + 1/√2|001>  - Now the prob of the last bit being 1 == 1 & -1's combined amplitudes
+        H(register[2]);                         // 1/√2|000> + 1/√2|001>
+        CNOT(register[2],register[1]);          // 1/√2|000> + 1/√2|011>
+        H(register[0]);                         // 1/2(|000>+|100>) + 1/2(|011> + |111>)
+        X(register[2]);                         // 1/√2|001> + 1/2(|010> + |110>)
         
-        Controlled H([register[2]],register[0]);
-        Controlled H([register[2]],register[1]);// b(|001>+|011>+|101>+|111>) + a(|010>+|110>)
+        Controlled H([register[2]],register[1]);// √2/4(|001>+|101>+|011>+|111>) + 1/2(|010> + |110>)
         
-        Z(register[1]);                         // b(|001>+|011>-|101>-|111>) + a(|010>-|110>)
+        Z(register[0]);                         // √2/4(|001>-|101>+|011>-|111>) + 1/2(|010> - |110>)
 
-        //fail "Not implemented.";
+        //SWAP(register[0], register[2]);
     }
 
     operation Challenge3Tester() : Qubit[]{
-        let iterations = 1000;
+        let iterations = 10000;
         Message($"Iterations:{iterations}");
         mutable outcomeCounter = [0, size=8];
         use qubits = Qubit[3];
@@ -422,19 +417,6 @@ namespace Lab3 {
         return qubits;
     }
 
-    //Helpers
-    function normalize (doubles : Double[]) : Double[] {
-        mutable output = [];
-        mutable amp = 0.0;
-        for num in doubles { set amp += Microsoft.Quantum.Math.AbsD(num); }
-        Message($"Amp: {amp}");
-        for num in doubles{
-            set output += [Sqrt(AbsD(num/amp))*IntAsDouble(SignD(num))];
-        }
-        return output;
-    }
-
-
     /// # Summary
     /// This problem is the same as Challenge 3, but now you must construct a
     /// superposition using 8 samples of a cosine wave instead of a sine wave.
@@ -442,14 +424,14 @@ namespace Lab3 {
     /// 
     ///  Index  |  Value
     /// ------- | -------
-    ///    0    |    1
-    ///    1    |   1/√2
-    ///    2    |    0
-    ///    3    |  -1/√2
-    ///    4    |   -1
-    ///    5    |  -1/√2
-    ///    6    |    0
-    ///    7    |   1/√2
+    ///    0    |    1      000
+    ///    1    |   1/√2    001
+    ///    2    |    0      010
+    ///    3    |  -1/√2    011
+    ///    4    |   -1      100
+    ///    5    |  -1/√2    101
+    ///    6    |    0      110
+    ///    7    |   1/√2    111
     /// 
     /// Once again, these values aren't normalized, so you will have to
     /// normalize them before using them as state amplitudes.
@@ -458,8 +440,17 @@ namespace Lab3 {
     /// ## register
     /// A three-qubit register in the |000> state.
     operation Challenge4 (register : Qubit[]) : Unit {
-        // TODO
-        fail "Not implemented.";
+        
+        // Same Normalization Suff
+        // Locations at \psi2 are also 0
+        // √2/4(|001>-|011>-|101>+|111>) + 1/2(|000>-|100>)
+
+        H(register[2]);                                             // 1/√2|000> + 1/√2|001>
+        Controlled H([register[2]],register[0]);                    // 1/√2|000> + 1/2(|001>+|101>)
+        X(register[2]);                                             // 1/√2|001> + 1/2(|000>+|100>)
+        ApplyToEach(Controlled H([register[2]], _), register[0..1]);// √2/4(|001>+|011>+|101>+|111>) + 1/2(|000>+|100>)
+        Z(register[0]);                                             // √2/4(|001>+|011>-|101>-|111>) + 1/2(|000>-|100>)
+        CZ(register[1],register[2]);                                // √2/4(|001>-|011>-|101>+111>) + 1/2(|000>-|100>)
     }
 }
 

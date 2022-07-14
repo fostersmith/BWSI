@@ -34,12 +34,10 @@ using Microsoft.Quantum.Simulation.Core;
 [assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge2\"},\"Attributes\":[],\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":309,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":21}},\"Documentation\":[]}")]
 [assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge3\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":361,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":21}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"register\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":23},\"Item2\":{\"Line\":1,\"Column\":31}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[\" # Summary\",\" In this problem, you are given a three-qubit register in the |000>\",\" state. Your goal is to encode 8 samples of a sine wave into its\",\" amplitude. The samples should be evenly spaced in π/4 increments,\",\" starting with 0 and ending with 7π/4. The sine wave samples are laid\",\" out in the table below:\",\"\",\"  Index  |  Value\",\" ------- | -------\",\"    0    |    0\",\"    1    |   1/√2\",\"    2    |    1\",\"    3    |   1/√2\",\"    4    |    0\",\"    5    |  -1/√2\",\"    6    |   -1\",\"    7    |  -1/√2\",\"\",\" Note that these samples are not normalized; if they were used as state\",\" amplitudes, they would result in a probability greater than 1.\",\"\",\" Your first task is to normalize the sine wave samples so they can be\",\" used as state amplitudes. Your second task is to encode these 8\",\" normalized values as the amplitudes of the three-qubit register.\",\"\",\" # Input\",\" ## register\",\" A three-qubit register in the |000> state.\",\"\",\" # Remarks\",\" This kind of challenge is common in quantum computing - essentially,\",\" you need to construct an efficient circuit that will take real data,\",\" and encode it into the superposition of a qubit register. Note that\",\" normally, it would take 8 doubles to store these values in\",\" conventional memory - a total of 512 classical bits. You're going to\",\" encode the exact same data in 3 qubits. We'll talk more about how\",\" quantum computers do things faster than classical computers once we\",\" get to quantum algorithms, but this is a good first hint.\"]}")]
 [assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge3\"},\"Attributes\":[],\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":361,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":21}},\"Documentation\":[]}")]
-[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge3Tester\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Transparent\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":397,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":27}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"UnitType\"},\"ReturnType\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge3Tester\"},\"Attributes\":[],\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":397,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":27}},\"Documentation\":[]}")]
-[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Function\"},\"QualifiedName\":{\"Namespace\":\"Lab3\",\"Name\":\"normalize\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":425,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":10},\"Item2\":{\"Line\":1,\"Column\":19}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"doubles\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Double\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":21},\"Item2\":{\"Line\":1,\"Column\":28}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Double\"}]},\"ReturnType\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Double\"}]},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Lab3\",\"Name\":\"normalize\"},\"Attributes\":[],\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":425,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":10},\"Item2\":{\"Line\":1,\"Column\":19}},\"Documentation\":[]}")]
-[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge4\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":459,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":21}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"register\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":23},\"Item2\":{\"Line\":1,\"Column\":31}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[\" # Summary\",\" This problem is the same as Challenge 3, but now you must construct a\",\" superposition using 8 samples of a cosine wave instead of a sine wave.\",\" For your convenience, the cosine samples are listed in this table:\",\"\",\"  Index  |  Value\",\" ------- | -------\",\"    0    |    1\",\"    1    |   1/√2\",\"    2    |    0\",\"    3    |  -1/√2\",\"    4    |   -1\",\"    5    |  -1/√2\",\"    6    |    0\",\"    7    |   1/√2\",\"\",\" Once again, these values aren't normalized, so you will have to\",\" normalize them before using them as state amplitudes.\",\"\",\" # Input\",\" ## register\",\" A three-qubit register in the |000> state.\"]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge4\"},\"Attributes\":[],\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":459,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":21}},\"Documentation\":[]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge3Tester\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Transparent\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":393,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":27}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"UnitType\"},\"ReturnType\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge3Tester\"},\"Attributes\":[],\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":393,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":27}},\"Documentation\":[]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge4\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":442,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":21}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"register\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":23},\"Item2\":{\"Line\":1,\"Column\":31}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[\" # Summary\",\" This problem is the same as Challenge 3, but now you must construct a\",\" superposition using 8 samples of a cosine wave instead of a sine wave.\",\" For your convenience, the cosine samples are listed in this table:\",\"\",\"  Index  |  Value\",\" ------- | -------\",\"    0    |    1      000\",\"    1    |   1/√2    001\",\"    2    |    0      010\",\"    3    |  -1/√2    011\",\"    4    |   -1      100\",\"    5    |  -1/√2    101\",\"    6    |    0      110\",\"    7    |   1/√2    111\",\"\",\" Once again, these values aren't normalized, so you will have to\",\" normalize them before using them as state amplitudes.\",\"\",\" # Input\",\" ## register\",\" A three-qubit register in the |000> state.\"]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Lab3\",\"Name\":\"Challenge4\"},\"Attributes\":[],\"SourceFile\":\"D:\\\\BWSI\\\\exercises\\\\exercises\\\\QSharpExercises\\\\Lab3\\\\Lab3.qs\",\"Position\":{\"Item1\":442,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":21}},\"Documentation\":[]}")]
 #line hidden
 namespace Lab3
 {
@@ -607,7 +605,7 @@ namespace Lab3
         }
     }
 
-    [SourceLocation("D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs", OperationFunctor.Body, 362, 398)]
+    [SourceLocation("D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs", OperationFunctor.Body, 362, 394)]
     public partial class Challenge3 : Operation<IQArray<Qubit>, QVoid>, ICallable
     {
         public Challenge3(IOperationFactory m) : base(m)
@@ -616,19 +614,7 @@ namespace Lab3
 
         String ICallable.Name => "Challenge3";
         String ICallable.FullName => "Lab3.Challenge3";
-        protected ICallable<Double, Double> Microsoft__Quantum__Math__ArcSin
-        {
-            get;
-            set;
-        }
-
-        protected ICallable<Double, Double> Microsoft__Quantum__Math__Sqrt
-        {
-            get;
-            set;
-        }
-
-        protected IUnitary<(Double,Qubit)> Microsoft__Quantum__Intrinsic__Ry
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__H
         {
             get;
             set;
@@ -640,13 +626,13 @@ namespace Lab3
             set;
         }
 
-        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__H
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__X
         {
             get;
             set;
         }
 
-        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__X
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__Z
         {
             get;
             set;
@@ -657,20 +643,18 @@ namespace Lab3
             var register = __in__;
 #line 363 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
             var __arg1__ = "mutable samples = [];\n        for i in 0..7 {\n            set samples += [Sin(IntAsDouble(i)*PI()/4.0)];\n        }\n        let data = normalize(samples);";
-#line 384 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            var theta = (2D * Microsoft__Quantum__Math__ArcSin.Apply(Microsoft__Quantum__Math__Sqrt.Apply((Microsoft__Quantum__Math__Sqrt.Apply(2D) / (2D + Microsoft__Quantum__Math__Sqrt.Apply(2D))))));
-#line 385 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            Microsoft__Quantum__Intrinsic__Ry.Apply((theta, register[2L]));
-#line 386 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 382 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            Microsoft__Quantum__Intrinsic__H.Apply(register[2L]);
+#line 383 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
             Microsoft__Quantum__Intrinsic__CNOT.Apply((register[2L], register[1L]));
-#line 387 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            Microsoft__Quantum__Intrinsic__H.Controlled.Apply((new QArray<Qubit>(register[2L]), register[0L]));
-#line 388 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 384 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            Microsoft__Quantum__Intrinsic__H.Apply(register[0L]);
+#line 385 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
             Microsoft__Quantum__Intrinsic__X.Apply(register[2L]);
-#line 390 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            Microsoft__Quantum__Intrinsic__H.Controlled.Apply((new QArray<Qubit>(register[2L]), register[0L]));
-#line 391 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 387 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
             Microsoft__Quantum__Intrinsic__H.Controlled.Apply((new QArray<Qubit>(register[2L]), register[1L]));
+#line 389 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            Microsoft__Quantum__Intrinsic__Z.Apply(register[0L]);
 #line hidden
             return QVoid.Instance;
         }
@@ -678,12 +662,10 @@ namespace Lab3
         ;
         public override void __Init__()
         {
-            this.Microsoft__Quantum__Math__ArcSin = this.__Factory__.Get<ICallable<Double, Double>>(typeof(global::Microsoft.Quantum.Math.ArcSin));
-            this.Microsoft__Quantum__Math__Sqrt = this.__Factory__.Get<ICallable<Double, Double>>(typeof(global::Microsoft.Quantum.Math.Sqrt));
-            this.Microsoft__Quantum__Intrinsic__Ry = this.__Factory__.Get<IUnitary<(Double,Qubit)>>(typeof(global::Microsoft.Quantum.Intrinsic.Ry));
-            this.Microsoft__Quantum__Intrinsic__CNOT = this.__Factory__.Get<IUnitary<(Qubit,Qubit)>>(typeof(global::Microsoft.Quantum.Intrinsic.CNOT));
             this.Microsoft__Quantum__Intrinsic__H = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.H));
+            this.Microsoft__Quantum__Intrinsic__CNOT = this.__Factory__.Get<IUnitary<(Qubit,Qubit)>>(typeof(global::Microsoft.Quantum.Intrinsic.CNOT));
             this.Microsoft__Quantum__Intrinsic__X = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.X));
+            this.Microsoft__Quantum__Intrinsic__Z = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.Z));
         }
 
         public override IApplyData __DataIn__(IQArray<Qubit> data) => data;
@@ -694,7 +676,7 @@ namespace Lab3
         }
     }
 
-    [SourceLocation("D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs", OperationFunctor.Body, 398, 426)]
+    [SourceLocation("D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs", OperationFunctor.Body, 394, 443)]
     public partial class Challenge3Tester : Operation<QVoid, IQArray<Qubit>>, ICallable
     {
         public Challenge3Tester(IOperationFactory m) : base(m)
@@ -771,65 +753,65 @@ namespace Lab3
 
         public override Func<QVoid, IQArray<Qubit>> __Body__ => (__in__) =>
         {
-#line 399 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            var iterations = 1000L;
-#line 400 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 395 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            var iterations = 10000L;
+#line 396 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
             Message__.Apply(String.Format("Iterations:{0}", iterations));
-#line 401 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 397 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
 #line hidden
             var __arg1__ = 0L;
-#line 401 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 397 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
             var outcomeCounter = new QArray<Int64>(QArray.Filled(() => __arg1__, 8L));
 #line hidden
             {
-#line 402 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 398 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                 var qubits = Allocate__.Apply(3L);
 #line hidden
                 bool __arg2__ = true;
                 try
                 {
-#line 403 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 399 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                     foreach (var i in new QRange(1L, iterations))
 #line hidden
                     {
-#line 404 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 400 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                         foreach (var qubit in qubits)
 #line hidden
                         {
-#line 405 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 401 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                             Reset__.Apply(qubit);
                         }
 
-#line 407 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 403 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                         Challenge3__.Apply(qubits);
-#line 408 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 404 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                         var result = Microsoft__Quantum__Convert__ResultArrayAsInt.Apply(new QArray<Result>(Microsoft__Quantum__Intrinsic__M.Apply(qubits[0L]), Microsoft__Quantum__Intrinsic__M.Apply(qubits[1L]), Microsoft__Quantum__Intrinsic__M.Apply(qubits[2L])));
-#line 409 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 405 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                         outcomeCounter.Modify(result, (outcomeCounter[result] + 1L));
-#line 410 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 406 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                         if (((i % 5L) == 0L))
                         {
-#line 411 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 407 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                             Message__.Apply(String.Format("Iteration {0}/{1}:", i, iterations));
-#line 412 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 408 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                             foreach (var r in new QRange(0L, (outcomeCounter.Length - 1L)))
 #line hidden
                             {
-#line 413 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 409 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                                 var dec = (Microsoft__Quantum__Convert__IntAsDouble.Apply(outcomeCounter[r]) / Microsoft__Quantum__Convert__IntAsDouble.Apply(i));
-#line 414 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 410 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                                 var rBool = (IQArray<Boolean>)Microsoft__Quantum__Convert__IntAsBoolArray.Apply((r, 3L));
-#line 415 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-                                Message__.Apply(String.Format("{0}\t|{1}{2}{3}>({4})\t{5}/{6}", dec, (rBool[0L] ? 1L : 0L), (rBool[1L] ? 1L : 0L), (rBool[2L] ? 1L : 0L), r, outcomeCounter[r], i));
+#line 411 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+                                Message__.Apply(String.Format("{0}\t|{1}{2}{3}>({4})\t{5}/{6}", dec, (rBool[2L] ? 1L : 0L), (rBool[1L] ? 1L : 0L), (rBool[0L] ? 1L : 0L), r, outcomeCounter[r], i));
                             }
                         }
                     }
 
-#line 420 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 416 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                     Reset__.Apply(qubits[0L]);
-#line 421 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 417 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                     Microsoft__Quantum__Intrinsic__X.Apply(qubits[0L]);
-#line 422 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+#line 418 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
                     return qubits;
                 }
 #line hidden
@@ -874,93 +856,7 @@ namespace Lab3
         }
     }
 
-    [SourceLocation("D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs", OperationFunctor.Body, 426, 460)]
-    public partial class normalize : Function<IQArray<Double>, IQArray<Double>>, ICallable
-    {
-        public normalize(IOperationFactory m) : base(m)
-        {
-        }
-
-        String ICallable.Name => "normalize";
-        String ICallable.FullName => "Lab3.normalize";
-        protected ICallable<Double, Double> Microsoft__Quantum__Math__AbsD
-        {
-            get;
-            set;
-        }
-
-        protected ICallable<String, QVoid> Message__
-        {
-            get;
-            set;
-        }
-
-        protected ICallable<Double, Double> Microsoft__Quantum__Math__Sqrt
-        {
-            get;
-            set;
-        }
-
-        protected ICallable<Int64, Double> Microsoft__Quantum__Convert__IntAsDouble
-        {
-            get;
-            set;
-        }
-
-        protected ICallable<Double, Int64> Microsoft__Quantum__Math__SignD
-        {
-            get;
-            set;
-        }
-
-        public override Func<IQArray<Double>, IQArray<Double>> __Body__ => (__in__) =>
-        {
-            var doubles = __in__;
-#line 427 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            var output = new QArray<Double>();
-#line 428 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            var amp = 0D;
-#line 429 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            foreach (var num in doubles)
-#line hidden
-            {
-#line 429 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-                amp = (amp + Microsoft__Quantum__Math__AbsD.Apply(num));
-            }
-
-#line 430 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            Message__.Apply(String.Format("Amp: {0}", amp));
-#line 431 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            foreach (var num in doubles)
-#line hidden
-            {
-#line 432 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-                output = QArray<Double>.Add(output, new QArray<Double>((Microsoft__Quantum__Math__Sqrt.Apply(Microsoft__Quantum__Math__AbsD.Apply((num / amp))) * Microsoft__Quantum__Convert__IntAsDouble.Apply(Microsoft__Quantum__Math__SignD.Apply(num)))));
-            }
-
-#line 434 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            return output;
-        }
-
-        ;
-        public override void __Init__()
-        {
-            this.Microsoft__Quantum__Math__AbsD = this.__Factory__.Get<ICallable<Double, Double>>(typeof(global::Microsoft.Quantum.Math.AbsD));
-            this.Message__ = this.__Factory__.Get<ICallable<String, QVoid>>(typeof(global::Microsoft.Quantum.Intrinsic.Message));
-            this.Microsoft__Quantum__Math__Sqrt = this.__Factory__.Get<ICallable<Double, Double>>(typeof(global::Microsoft.Quantum.Math.Sqrt));
-            this.Microsoft__Quantum__Convert__IntAsDouble = this.__Factory__.Get<ICallable<Int64, Double>>(typeof(global::Microsoft.Quantum.Convert.IntAsDouble));
-            this.Microsoft__Quantum__Math__SignD = this.__Factory__.Get<ICallable<Double, Int64>>(typeof(global::Microsoft.Quantum.Math.SignD));
-        }
-
-        public override IApplyData __DataIn__(IQArray<Double> data) => data;
-        public override IApplyData __DataOut__(IQArray<Double> data) => data;
-        public static System.Threading.Tasks.Task<IQArray<Double>> Run(IOperationFactory __m__, IQArray<Double> doubles)
-        {
-            return __m__.Run<normalize, IQArray<Double>, IQArray<Double>>(doubles);
-        }
-    }
-
-    [SourceLocation("D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs", OperationFunctor.Body, 460, -1)]
+    [SourceLocation("D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs", OperationFunctor.Body, 443, -1)]
     public partial class Challenge4 : Operation<IQArray<Qubit>, QVoid>, ICallable
     {
         public Challenge4(IOperationFactory m) : base(m)
@@ -969,11 +865,51 @@ namespace Lab3
 
         String ICallable.Name => "Challenge4";
         String ICallable.FullName => "Lab3.Challenge4";
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__H
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__X
+        {
+            get;
+            set;
+        }
+
+        protected ICallable Microsoft__Quantum__Canon__ApplyToEach
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__Z
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary<(Qubit,Qubit)> Microsoft__Quantum__Canon__CZ
+        {
+            get;
+            set;
+        }
+
         public override Func<IQArray<Qubit>, QVoid> __Body__ => (__in__) =>
         {
             var register = __in__;
-#line 462 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
-            throw new ExecutionFailException("Not implemented.");
+#line 449 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            Microsoft__Quantum__Intrinsic__H.Apply(register[2L]);
+#line 450 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            Microsoft__Quantum__Intrinsic__H.Controlled.Apply((new QArray<Qubit>(register[2L]), register[0L]));
+#line 451 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            Microsoft__Quantum__Intrinsic__X.Apply(register[2L]);
+#line 452 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            Microsoft__Quantum__Canon__ApplyToEach.Apply((Microsoft__Quantum__Intrinsic__H.Controlled.Partial(new Func<Qubit, (IQArray<Qubit>,Qubit)>((__arg1__) => (new QArray<Qubit>(register[2L]), __arg1__))), register.Slice(new QRange(0L, 1L))));
+#line 453 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            Microsoft__Quantum__Intrinsic__Z.Apply(register[0L]);
+#line 454 "D:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab3\\Lab3.qs"
+            Microsoft__Quantum__Canon__CZ.Apply((register[1L], register[2L]));
 #line hidden
             return QVoid.Instance;
         }
@@ -981,6 +917,11 @@ namespace Lab3
         ;
         public override void __Init__()
         {
+            this.Microsoft__Quantum__Intrinsic__H = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.H));
+            this.Microsoft__Quantum__Intrinsic__X = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.X));
+            this.Microsoft__Quantum__Canon__ApplyToEach = this.__Factory__.Get<ICallable>(typeof(global::Microsoft.Quantum.Canon.ApplyToEach<>));
+            this.Microsoft__Quantum__Intrinsic__Z = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.Z));
+            this.Microsoft__Quantum__Canon__CZ = this.__Factory__.Get<IUnitary<(Qubit,Qubit)>>(typeof(global::Microsoft.Quantum.Canon.CZ));
         }
 
         public override IApplyData __DataIn__(IQArray<Qubit> data) => data;

@@ -27,8 +27,19 @@ namespace Lab4 {
     /// A qubit that is entangled with another qubit in the state
     /// 1/√2(|00> + |11>).
     operation Exercise1 (buffer : Bool[], pairA : Qubit) : Unit {
-        // TODO
-        fail "Not implemented.";
+        if(buffer[0]){
+            if(buffer[1]){ //11
+                X(pairA);
+                Z(pairA);
+            } else{ //10
+                Z(pairA);
+            }
+        } else{
+            if(buffer[1]){ //01
+                X(pairA);
+            }
+            //11 - Do nothing
+        }
     }
 
 
@@ -53,7 +64,8 @@ namespace Lab4 {
     /// A classical bit array containing the two bits that were encoded in the
     /// entangled pair. Use false for 0 and true for 1.
     operation Exercise2 (pairA : Qubit, pairB : Qubit) : Bool[] {
-        // TODO
-        fail "Not implemented.";
+        CNOT(pairA, pairB);
+        H(pairA);        
+        return ResultArrayAsBoolArray([M(pairA),M(pairB)]);
     }
 }
