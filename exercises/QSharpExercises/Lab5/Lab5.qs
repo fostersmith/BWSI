@@ -70,8 +70,8 @@ namespace Lab5 {
         // same effect as not flipping it at all. Phase-flipping it three
         // times will have the same effect as only flipping it once, etc.
 
-        // TODO
-        fail "Not implemented.";
+        ApplyToEach(CZ(_, output), input);
+        //fail "Not implemented.";
     }
 
 
@@ -116,8 +116,13 @@ namespace Lab5 {
         // You'll have to find a way to check the parity of the two qubits
         // without measuring anything.
 
+        ApplyToEach(X, [input[firstIndex], input[secondIndex]]);
+        Controlled Z([input[firstIndex], input[secondIndex]], output);
+        ApplyToEach(X, [input[firstIndex], input[secondIndex]]);
+        Controlled Z([input[firstIndex], input[secondIndex]], output);
+
         // TODO
-        fail "Not implemented.";
+        //fail "Not implemented.";
     }
 
 

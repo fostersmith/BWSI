@@ -27,7 +27,15 @@ namespace Lab4 {
     /// A qubit that is entangled with another qubit in the state
     /// 1/√2(|00> + |11>).
     operation Exercise1 (buffer : Bool[], pairA : Qubit) : Unit {
-        if(buffer[0]){
+        
+        if(buffer[1]) { // 00, 01, 10-X, 11-X
+            X(pairA);
+        }
+        if(buffer[0]) { // 00, 01-Z, 10-X, 11-XZ
+            Z(pairA);
+        }
+
+        let _ = "if(buffer[0]){
             if(buffer[1]){ //11
                 X(pairA);
                 Z(pairA);
@@ -39,7 +47,7 @@ namespace Lab4 {
                 X(pairA);
             }
             //11 - Do nothing
-        }
+        }";
     }
 
 
