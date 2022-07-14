@@ -6,6 +6,7 @@ namespace Lab3 {
     open Microsoft.Quantum.Canon;
     open Microsoft.Quantum.Intrinsic;
     open Microsoft.Quantum.Math;
+    open Microsoft.Quantum.Convert;
 
 
     /// # Summary
@@ -28,8 +29,11 @@ namespace Lab3 {
     /// superpositions, where a register is in a combination of all possible
     /// states, and each state has an equal amplitude to the others.
     operation Exercise1 (register : Qubit[]) : Unit {
-        // TODO
-        fail "Not implemented.";
+        
+        for qubit in register{
+            H(qubit);
+        }
+
     }
 
 
@@ -61,8 +65,8 @@ namespace Lab3 {
         // in "QSharpReference.qs". It will show you the syntax for running a
         // gate in controlled mode with more than one control qubit.
 
-        // TODO
-        fail "Not implemented.";
+        Exercise1(register);
+        Controlled X(register,target);
     }
 
 
@@ -96,8 +100,9 @@ namespace Lab3 {
         // the qubits are in the |0> state, to the state |111> so the register
         // can be used as a set of control qubits.
 
-        // TODO
-        fail "Not implemented.";
+        Exercise2(register,target);
+        X(register[0]);
+        X(register[1]);
     }
 
 
@@ -127,8 +132,22 @@ namespace Lab3 {
         // the positive states are on one side together, and the negative
         // states are on the other side together.
 
-        // TODO
-        fail "Not implemented.";
+
+        // Set all to |+++>
+        for register in registers{
+            for qubit in register{
+                H(qubit);
+            }
+        }
+
+        // Register 0: Phase flip where Ψ2 == 1
+        Z(registers[0][2]);
+
+        // Register 1: Phase flip where Ψ1 == 1
+        Z(registers[1][1]);
+
+        // Register 2: Phase flip where Ψ0 == 1
+        Z(registers[2][0]);
     }
 
 
@@ -165,8 +184,13 @@ namespace Lab3 {
         // Once you've allocated and flipped the target qubit, your goal is to
         // use that information to flip the phase of the |110> state.
 
-        // TODO
-        fail "Not implemented.";
+        // Set to |+++>
+        for qubit in register{
+            H(qubit);
+        }
+        Controlled Z(register[0..1],register[2]);   // +|111> -> -|111>
+        X(register[2]);                             // -|111> -> -|110>,  +|110> -> +|111>
+
     }
 
 
@@ -194,8 +218,10 @@ namespace Lab3 {
         // in square brackets: 
         //      let newArray = [someQubit];
 
-        // TODO
-        fail "Not implemented.";
+        H(register[0]);                             // 1/√2(|00> + |10>)
+        Controlled H(register[0..0], register[1]);  // 1/√2|00> + 1/2(|10> + |11>)
+    
+        //Would this even work?
     }
 
 
@@ -222,8 +248,14 @@ namespace Lab3 {
         // Note: It is possible (but challenging) to prepare this state
         // without using an ancilla qubit.
 
-        // TODO
-        fail "Not implemented.";
+        H(register[0]);                             // 1/√2(|000> + |100>)
+        Controlled H(register[0..0],register[1]);   // 1/√2*|000> + 1/2(|100> + |110>)
+        CNOT(register[1], register[2]);             // 1/√2*|000> + 1/2(|100> + |111>)
+        Controlled Z(register[0..1], register[2]);  // 1/√2*|000> + 1/2(|100> - |111>)
+        CX(register[0], register[1]);               // 1/√2*|000> + 1/2(|110> - |101>)
+        CX(register[0], register[2]);               // 1/√2*|000> + 1/2(|111> - |100>)
+    
+        //This is most definitely the wrong way
     }
 
 
@@ -253,8 +285,13 @@ namespace Lab3 {
     /// ## register
     /// A two-qubit register in the |00> state.
     operation Challenge1 (register : Qubit[]) : Unit {
-        // TODO
-        fail "Not implemented.";
+        
+        let theta = 2.0*ArcSin(1.0/Sqrt(3.0)); //Derived from the Ry matrix so that Ry(theta,|0>) == √6/3*|0> + 1/√3*|1>
+
+        Ry(theta, register[1]);                     // √6/3*|00> + 1/√3*|01>
+        X(register[1]);                             // √6/3*|01> + 1/√3*|00>
+        Controlled H([register[1]], register[0]);   // 1/√3*(|01> + |11>) + 1/√3*|00>
+        X(register[1]);                             // 1/√3*(|00> + |10> + |01>)
     }
 
 
@@ -271,8 +308,16 @@ namespace Lab3 {
     /// ## register
     /// A three-qubit register in the |000> state.
     operation Challenge2 (register : Qubit[]) : Unit {
-        // TODO
-        fail "Not implemented.";
+
+        let theta = 2.0*ArcSin(1.0/Sqrt(3.0)); //Derived from the Ry matrix so that Ry(theta,|0>) == √6/3*|0> + 1/√3*|1>
+
+        Ry(theta,register[0]);                      // √6/3*|000> + 1/√3*|100>
+        X(register[0]);                             // √6/3*|100> + 1/√3*|000>
+        Controlled H([register[0]], register[1]);   // 1/√3*(|100>+|110>) + 1/√3*|000>
+        X(register[1]);                             // 1/√3*(|110>+|100>) + 1/√3*|010>
+        CCNOT(register[0],register[1],register[2]); // 1/√3*(|111>+|100>) + 1/√3*|010>
+        X(register[0]);
+        X(register[1]);                             // 1/√3*(|001>+|010>+|100>)
     }
 
 
@@ -315,8 +360,78 @@ namespace Lab3 {
     /// quantum computers do things faster than classical computers once we
     /// get to quantum algorithms, but this is a good first hint.
     operation Challenge3 (register : Qubit[]) : Unit {
-        // TODO
-        fail "Not implemented.";
+        let _ = "mutable samples = [];
+        for i in 0..7 {
+            set samples += [Sin(IntAsDouble(i)*PI()/4.0)];
+        }
+        let data = normalize(samples);";
+
+        //            000, 001, 010, 011, 100, 101, 110, 111
+        // Initial = [0,   1/√2,1,   1/√2,0,  -1/√2,-1, -1/√2]
+        // To Normalize: First sum absolute values. Then each item = sqrt(|n/sum|)*Sign(n)
+        // Sum = 4*(1/√2) + 2*1 = 4/√2+2√2/√2 = (4+2√2)/√2
+        // Normalized Val of 1:    √(√2/(4+2√2)) (a)
+        // Normalized Val of 1/√2: √(1/(4+2√2))  (b)
+        // Fully Normalized: [0, b, a, b, 0, -b, -a, -b]
+        // Goal: 0*|000> + b*|001> + a*|010> + b*|011> + 0*|100> - b*|101> - a*|110> - b*|111>
+        // 0(|000>+|100>) + a(|010>-|110>) + b(|001>+|011>-|101>-|111>)
+        // Approach: First rotate psi2 to have a zero probability of √2/(4+2√2)*2 (our 1 and -1 will be here, the zeros are ignored)
+        // Split psi2==0 with CCH(!psi2, psi0, psi1)
+        // CH(psi2, psi0)
+        // CH(psi2, psi1)
+
+        //Combined prob of 1s =  2a^2 = 2(√(√2/(4+2√2)))^2 = 2(√2/(4+2√2)) = 2√2/(4+2√2) = 2√2/2(2+√2)  = 2/(2+√2). Take square root to get the amplitude
+        let theta = 2.0*ArcSin(Sqrt( Sqrt(2.0)/(2.0+Sqrt(2.0)) ));
+        Ry(theta, register[2]);                 // √(4b^2)|000> + √(2a^2)|001>  - Now the prob of the last bit being 1 == 1 & -1's combined amplitudes
+        CNOT(register[2],register[1]);          // √(4b^2)|000> + √(2a^2)|011>
+        Controlled H([register[2]],register[0]);// √(4b^2)|000> + a(|011>+|111>)
+        X(register[2]);                         // √(4b^2)|001> + a(|010>+|110>)
+        
+        Controlled H([register[2]],register[0]);
+        Controlled H([register[2]],register[1]);// b(|001>+|011>+|101>+|111>) + a(|010>+|110>)
+        
+        Z(register[1]);                         // b(|001>+|011>-|101>-|111>) + a(|010>-|110>)
+
+        //fail "Not implemented.";
+    }
+
+    operation Challenge3Tester() : Qubit[]{
+        let iterations = 1000;
+        Message($"Iterations:{iterations}");
+        mutable outcomeCounter = [0, size=8];
+        use qubits = Qubit[3];
+        for i in 1..iterations{
+            for qubit in qubits{
+                Reset(qubit);
+            }
+            Challenge3(qubits);
+            let result = ResultArrayAsInt([ M(qubits[0]), M(qubits[1]), M(qubits[2])]);
+            set outcomeCounter w/= result <- outcomeCounter[result] + 1;
+            if(i%5==0){
+                Message($"Iteration {i}/{iterations}:");
+                for r in 0..Length(outcomeCounter)-1{
+                    let dec = IntAsDouble(outcomeCounter[r])/IntAsDouble(i);
+                    let rBool = IntAsBoolArray(r,3);
+                    Message($"{dec}\t|{rBool[2]?1|0}{rBool[1]?1|0}{rBool[0]?1|0}>({r})\t{outcomeCounter[r]}/{i}");
+                }
+            }
+        }
+        
+        Reset(qubits[0]);
+        X(qubits[0]);
+        return qubits;
+    }
+
+    //Helpers
+    function normalize (doubles : Double[]) : Double[] {
+        mutable output = [];
+        mutable amp = 0.0;
+        for num in doubles { set amp += Microsoft.Quantum.Math.AbsD(num); }
+        Message($"Amp: {amp}");
+        for num in doubles{
+            set output += [Sqrt(AbsD(num/amp))*IntAsDouble(SignD(num))];
+        }
+        return output;
     }
 
 

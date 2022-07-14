@@ -75,9 +75,7 @@ namespace Lab2 {
         let len = Length(register);
 
         for i in 0..len/2-1 {
-            if(i!=len-1-i){
-                SWAP(register[i],register[len-1-i]);
-            }
+            SWAP(register[i],register[len-1-i]);
         }
     }
 
@@ -120,11 +118,11 @@ namespace Lab2 {
 
         //Leave the first register alone
 
-        CZ(registers[1][0],registers[1][1]); //Controlled Z will turn the second term into -|11>
+        Z(registers[1][0]); // Z will turn the second term into -|11>
 
         X(registers[2][1]); //Flip the second bit to get |01> + |10>
 
-        CZ(registers[3][0],registers[3][1]);
+        Z(registers[3][0]);
         X(registers[3][1]); //Combination of two previous operations
 
 
@@ -182,6 +180,6 @@ namespace Lab2 {
         H(register[2]);                 // 1/√2(|0100> + |0110>)
         CNOT(register[2], register[3]); // 1/√2(|0100> + |0111>)
         X(register[3]);                 // 1/√2(|0101> + |0110>)
-        Z(register[2]);   // 1/√2(|0101> - |0110>)
+        Z(register[2]);                 // 1/√2(|0101> - |0110>)
     }
 }

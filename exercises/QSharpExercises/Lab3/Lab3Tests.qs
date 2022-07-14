@@ -7,6 +7,7 @@ namespace QSharpExercises.Tests.Lab3 {
     open Microsoft.Quantum.Diagnostics;
     open Microsoft.Quantum.Intrinsic;
     open Microsoft.Quantum.Math;
+    open Microsoft.Quantum.Convert;
 
     open Lab3;
     // open QSharpExercises.Solutions.Lab3;
@@ -167,7 +168,7 @@ namespace QSharpExercises.Tests.Lab3 {
 
     @Test("QuantumSimulator")
     operation Challenge3Test () : Unit {
-        use qubits = Qubit[3];
+        let _ = "use qubits = Qubit[3];
 
         Challenge3(qubits);
 
@@ -179,6 +180,9 @@ namespace QSharpExercises.Tests.Lab3 {
         H(qubits[0]);
         X(qubits[0]);
 
+        AssertAllZero(qubits);";
+
+        let qubits = Challenge3Tester();
         AssertAllZero(qubits);
     }
 
