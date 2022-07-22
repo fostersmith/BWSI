@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\BWSI\\exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj": {}
+    "d:\\BWSI\\Exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj": {}
   },
   "projects": {
-    "d:\\BWSI\\exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj": {
+    "d:\\BWSI\\Exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\BWSI\\exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj",
+        "projectUniqueName": "d:\\BWSI\\Exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj",
         "projectName": "CSharpExercises",
-        "projectPath": "d:\\BWSI\\exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj",
+        "projectPath": "d:\\BWSI\\Exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj",
         "packagesPath": "C:\\Users\\Foster\\.nuget\\packages\\",
-        "outputPath": "d:\\BWSI\\exercises\\exercises\\CSharpExercises\\obj\\",
+        "outputPath": "d:\\BWSI\\Exercises\\exercises\\CSharpExercises\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Foster\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -284,10 +284,9 @@ namespace Lab3 {
     /// A two-qubit register in the |00> state.
     operation Challenge1 (register : Qubit[]) : Unit {
         
-        let theta = 2.0*ArcSin(1.0/Sqrt(3.0)); //Derived from the Ry matrix so that Ry(theta,|0>) == √6/3*|0> + 1/√3*|1>
+        let theta = 2.0*ArcSin(Sqrt(2.0 / 3.0)); //Derived from the Ry matrix so that Ry(theta,|0>) == √6/3*|0> + 1/√3*|1>
 
-        Ry(theta, register[1]);                     // √6/3*|00> + 1/√3*|01>
-        X(register[1]);                             // √6/3*|01> + 1/√3*|00>
+        Ry(theta, register[1]);                     // √6/3*|01> + 1/√3*|00>
         Controlled H([register[1]], register[0]);   // 1/√3*(|01> + |11>) + 1/√3*|00>
         X(register[1]);                             // 1/√3*(|00> + |10> + |01>)
     }
@@ -307,13 +306,12 @@ namespace Lab3 {
     /// A three-qubit register in the |000> state.
     operation Challenge2 (register : Qubit[]) : Unit {
 
-        let theta = 2.0*ArcSin(1.0/Sqrt(3.0)); //Derived from the Ry matrix so that Ry(theta,|0>) == √6/3*|0> + 1/√3*|1>
+        let theta = 2.0*ArcSin(Sqrt(2.0 / 3.0)); //Derived from the Ry matrix so that Ry(theta,|0>) == √6/3*|1> + 1/√3*|0>
 
-        Ry(theta,register[0]);                      // √6/3*|000> + 1/√3*|100>
-        X(register[0]);                             // √6/3*|100> + 1/√3*|000>
+        Ry(theta,register[0]);                      // 1/√3*|000> + √6/3*|100>
         Controlled H([register[0]], register[1]);   // 1/√3*(|100>+|110>) + 1/√3*|000>
-        X(register[1]);                             // 1/√3*(|110>+|100>) + 1/√3*|010>
-        CCNOT(register[0],register[1],register[2]); // 1/√3*(|111>+|100>) + 1/√3*|010>
+        X(register[1]);                             // 1/√3*(|110>+|100>+|010>)
+        CCNOT(register[0],register[1],register[2]); // 1/√3*(|111>+|100>+|010>)
         X(register[0]);
         X(register[1]);                             // 1/√3*(|001>+|010>+|100>)
     }
@@ -358,12 +356,6 @@ namespace Lab3 {
     /// quantum computers do things faster than classical computers once we
     /// get to quantum algorithms, but this is a good first hint.
     operation Challenge3 (register : Qubit[]) : Unit {
-        let _ = "mutable samples = [];
-        for i in 0..7 {
-            set samples += [Sin(IntAsDouble(i)*PI()/4.0)];
-        }
-        let data = normalize(samples);";
-
         //            000, 001, 010, 011, 100, 101, 110, 111
         // Initial = [0,   1/√2,1,   1/√2,0,  -1/√2,-1, -1/√2]
         // To Normalize: Find magnitude of vector of states, divide each by that
@@ -377,7 +369,7 @@ namespace Lab3 {
 
         //Combined prob of 1s =  2a^2 = 2(√(√2/(4+2√2)))^2 = 2(√2/(4+2√2)) = 2√2/(4+2√2) = 2√2/2(2+√2)  = 2/(2+√2) = (2-√2)/3. Take square root to get the amplitude
         //let theta = 2.0*ArcSin( Sqrt(2.0)/2.0 );
-        //Ry(theta, register[2]);               // 1/√2|000> + 1/√2|001>  - Now the prob of the last bit being 1 == 1 & -1's combined amplitudes
+
         H(register[2]);                         // 1/√2|000> + 1/√2|001>
         CNOT(register[2],register[1]);          // 1/√2|000> + 1/√2|011>
         H(register[0]);                         // 1/2(|000>+|100>) + 1/2(|011> + |111>)
@@ -388,33 +380,6 @@ namespace Lab3 {
         Z(register[0]);                         // √2/4(|001>-|101>+|011>-|111>) + 1/2(|010> - |110>)
 
         //SWAP(register[0], register[2]);
-    }
-
-    operation Challenge3Tester() : Qubit[]{
-        let iterations = 10000;
-        Message($"Iterations:{iterations}");
-        mutable outcomeCounter = [0, size=8];
-        use qubits = Qubit[3];
-        for i in 1..iterations{
-            for qubit in qubits{
-                Reset(qubit);
-            }
-            Challenge3(qubits);
-            let result = ResultArrayAsInt([ M(qubits[0]), M(qubits[1]), M(qubits[2])]);
-            set outcomeCounter w/= result <- outcomeCounter[result] + 1;
-            if(i%5==0){
-                Message($"Iteration {i}/{iterations}:");
-                for r in 0..Length(outcomeCounter)-1{
-                    let dec = IntAsDouble(outcomeCounter[r])/IntAsDouble(i);
-                    let rBool = IntAsBoolArray(r,3);
-                    Message($"{dec}\t|{rBool[2]?1|0}{rBool[1]?1|0}{rBool[0]?1|0}>({r})\t{outcomeCounter[r]}/{i}");
-                }
-            }
-        }
-        
-        Reset(qubits[0]);
-        X(qubits[0]);
-        return qubits;
     }
 
     /// # Summary

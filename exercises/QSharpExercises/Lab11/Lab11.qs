@@ -29,8 +29,19 @@ namespace QSharpExercises.Lab11 {
     /// to the original qubit. All of them are in the |0> state.
     operation Exercise1 (original : Qubit, spares : Qubit[]) : Unit
     is Adj {
-        // TODO
-        fail "Not implemented.";
+        
+        AdjApplyToEach(CNOT(original, _), spares[0..1]);
+        AdjApplyToEach(H, spares[3..5]);
+        AdjApplyToEach(CNOT(spares[5], _), [original, spares[0], spares[2]]);
+        AdjApplyToEach(CNOT(spares[4], _), [original, spares[1], spares[2]]);
+        AdjApplyToEach(CNOT(spares[3], _), spares[0..2]);
+
+    }
+
+    operation AdjApplyToEach(singleElementOperation:(Qubit=>Unit is Adj), register:Qubit[]) : Unit is Adj{
+        for qubit in register{
+            singleElementOperation(qubit);
+        }
     }
 
 
@@ -51,8 +62,15 @@ namespace QSharpExercises.Lab11 {
     /// An array of the 3 syndrome measurement results that the Steane code
     /// produces.
     operation Exercise2 (register : Qubit[]) : Result[] {
-        // TODO
-        fail "Not implemented.";
+        
+        use target = Qubit[3];
+
+        ApplyToEach(CNOT(_, target[2]), register[0..2..6]);
+        ApplyToEach(CNOT(_, target[1]), register[1..2] + register[5..6]);
+        ApplyToEach(CNOT(_, target[0]), register[3..6]);
+
+        return [M(target[0]), M(target[1]), M(target[2])];
+
     }
 
 
@@ -73,8 +91,15 @@ namespace QSharpExercises.Lab11 {
     /// An array of the 3 syndrome measurement results that the Steane code
     /// produces.
     operation Exercise3 (register : Qubit[]) : Result[] {
-        // TODO
-        fail "Not implemented.";
+        use target = Qubit[3];
+
+        ApplyToEach(H, target);
+        ApplyToEach(CNOT(target[2], _), register[0..2..6]);
+        ApplyToEach(CNOT(target[1], _), register[1..2] + register[5..6]);
+        ApplyToEach(CNOT(target[0], _), register[3..6]);
+        ApplyToEach(H, target);
+
+        return [M(target[0]), M(target[1]), M(target[2])];
     }
 
 
@@ -114,8 +139,7 @@ namespace QSharpExercises.Lab11 {
     /// classical method. It doesn't have any quantum parts to it, just lots
     /// of regular old classical math and logic.
     function Exercise4 (syndrome : Result[]) : Int {
-        // TODO
-        fail "Not implemented.";
+        return (ResultArrayAsInt(syndrome[2..-1..0]) - 1);
     }
 
 
@@ -141,7 +165,13 @@ namespace QSharpExercises.Lab11 {
     /// bunch of different original qubit states. Don't worry if it doesn't
     /// immediately finish!
     operation Exercise5 (register : Qubit[]) : Unit {
-        // TODO
-        fail "Not implemented.";
+        let bitIndex = Exercise4(Exercise2(register));
+        let phaseIndex = Exercise4(Exercise3(register));
+        if(bitIndex > -1){
+            X(register[bitIndex]);
+        }
+        if(phaseIndex > -1){
+            Z(register[phaseIndex]);
+        }
     }
 }

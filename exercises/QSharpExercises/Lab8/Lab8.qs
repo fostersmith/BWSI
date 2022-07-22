@@ -28,10 +28,23 @@ namespace Lab8 {
         // Exercise 2.
         // The second is the Microsoft.Quantum.Intrinsic.R1Frac() gate.
 
-        // TODO
-        fail "Not implemented.";
+        myQFT(register);
     }
 
+    // helpers
+    operation CRA(ctrl: Qubit, a: Double, qubit: Qubit) : Unit is Adj + Ctl {
+        Controlled R1([ctrl], (2.0*PI()/(2.0^a), qubit));
+    }
+    operation myQFT(register: BigEndian) : Unit is Adj + Ctl{
+        for j in 0..Length(register!)-1{
+            H(register![j]);
+            for i in (j+1)..Length(register!)-1{
+                let A = i-j+1;
+                CRA(register![j], IntAsDouble(A), register![i]);
+            }
+        }
+        SwapReverseRegister(register!);
+    }
 
     /// # Summary
     /// In this exercise, you are given a quantum register in an unknown
@@ -61,8 +74,25 @@ namespace Lab8 {
         register : BigEndian,
         sampleRate : Double
     ) : Double {
-        // TODO
-        fail "Not implemented.";
+        Message($"Starting test with SampleRate {sampleRate}");
+        Adjoint myQFT(register);    //to value-vs-frequency
+
+        let length = Length(register!);
+        let sampleSize = 2^length;
+
+        mutable output = 0;
+
+        // measure as int
+        for i in 0..length -1 {
+            mutable value = M(register![i])== One? 1 | 0;
+            set output += (2^(length - 1 - i)) * value;
+        }
+
+        if(output > sampleSize / 2){
+            set output = sampleSize - output;
+        }
+
+        return (IntAsDouble(output) * sampleRate) / IntAsDouble(sampleSize);
     }
 
 }

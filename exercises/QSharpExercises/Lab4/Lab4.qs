@@ -35,19 +35,6 @@ namespace Lab4 {
             Z(pairA);
         }
 
-        let _ = "if(buffer[0]){
-            if(buffer[1]){ //11
-                X(pairA);
-                Z(pairA);
-            } else{ //10
-                Z(pairA);
-            }
-        } else{
-            if(buffer[1]){ //01
-                X(pairA);
-            }
-            //11 - Do nothing
-        }";
     }
 
 

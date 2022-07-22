@@ -116,10 +116,8 @@ namespace Lab5 {
         // You'll have to find a way to check the parity of the two qubits
         // without measuring anything.
 
-        ApplyToEach(X, [input[firstIndex], input[secondIndex]]);
-        Controlled Z([input[firstIndex], input[secondIndex]], output);
-        ApplyToEach(X, [input[firstIndex], input[secondIndex]]);
-        Controlled Z([input[firstIndex], input[secondIndex]], output);
+        CZ(input[firstIndex], output);
+        CZ(input[secondIndex], output);
 
         // TODO
         //fail "Not implemented.";
@@ -165,7 +163,22 @@ namespace Lab5 {
         // Note: Remember to put the input and output in the correct states
         // before running the oracle!
 
-        // TODO
-        fail "Not implemented.";
+        //Algorithm
+        use (input, target) = (Qubit[inputLength], Qubit());
+        ApplyToEach(H, input);
+        X(target);
+        oracle(input, target);
+        ApplyToEach(H, input);
+
+        //Check for 0 state with what is essentially 0C..CNOT
+        ApplyToEach(X, input);              // |0..0> -> |1..1>
+        Controlled X(input, target);        // (+/-)|1> -> |0> if input is |1..1>
+        let balanced = M(target) == Zero;
+        
+        //Reset all for release
+        ResetAll(input + [target]);
+
+        return balanced;
+
     }
 }

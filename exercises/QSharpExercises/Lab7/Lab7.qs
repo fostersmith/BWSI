@@ -91,8 +91,20 @@ namespace Lab7 {
         op : ((Qubit[], Qubit[]) => Unit),
         input : Bool[]
     ) : Bool[] {
-        // TODO
-        fail "Not implemented.";
+        use register = Qubit[Length(input)];
+        use target = Qubit[Length(input)];
+        for i in 0..Length(input)-1{
+            if(input[i]){
+                X(register[i]);
+            }
+        }
+        op(register, target);
+        mutable output = [];
+        for qubit in target{
+            set output += [M(qubit) == One];
+        }
+        ResetAll(register);
+        return output;
     }
 
 
@@ -120,8 +132,17 @@ namespace Lab7 {
         op : ((Qubit[], Qubit[]) => Unit),
         inputSize : Int
     ) : Bool[] {
-        // TODO
-        fail "Not implemented.";
+        use register = Qubit[inputSize];
+        use target = Qubit[inputSize];
+        ApplyToEach(H, register);
+        op(register, target);
+        ApplyToEach(H, register);
+        mutable output = [];
+        for qubit in register {
+            set output += [M(qubit)==One];
+        }
+        ResetAll(target);
+        return output;
     }
 
 
@@ -158,8 +179,9 @@ namespace Lab7 {
     /// a three-qubit register, it would be |100>. If the unit tests provide
     /// that result, then you've implemented it properly.
     operation Challenge1 (input : Qubit[], output : Qubit[]) : Unit {
-        // TODO
-        fail "Not implemented.";
+        for i in 0..Length(input)-2 {
+            CNOT(input[i],output[i+1]);
+        }
     }
 
 
@@ -171,7 +193,7 @@ namespace Lab7 {
     /// 
     ///  Input | Output
     /// ---------------
-    ///   000  |  101
+    ///   000  |  101 
     ///   001  |  010
     ///   010  |  000
     ///   011  |  110
@@ -194,7 +216,18 @@ namespace Lab7 {
     /// variants of the X gate (CNOT and CCNOT).
     operation Challenge2 (input : Qubit[], output : Qubit[]) : Unit {
         // TODO
-        fail "Not implemented.";
+
+        use a = Qubit();
+        CNOT(input[2], output[1]);  // output[0] = 1 if input[2] = 1
+        CNOT(input[0], a);          // determine 'pair' - 0:a, 1:b
+        CNOT( input[1], a);
+        CCNOT(a, output[1], output[0]); // 000 and 110 states done
+        X(a);
+        X(output[1]);
+        CCNOT(a, output[1], output[0]);
+        CCNOT(a, output[1], output[2]);
+        X(output[1]);
+        Reset(a);
     }
 
 }

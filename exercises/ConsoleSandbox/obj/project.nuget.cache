@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r+Lea93vE6IWrE9jBW21U4LN25jIsXJZanTYI+VyUjt8CpOuR1MDUrM+8jAjJpJMjZuVjC6qlsavElHJubtzdQ==",
+  "dgSpecHash": "z/UsbhZMK6htybEVn69w2FHG5/HyzEFXSwtC5sM0muwv9fJyqmC8k4Rv1eCJ0uAyYeCmjTPkPBuyusdsYVW3Kg==",
   "success": true,
-  "projectFilePath": "d:\\BWSI\\exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj",
+  "projectFilePath": "d:\\BWSI\\Exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Foster\\.nuget\\packages\\azure.core\\1.22.0\\azure.core.1.22.0.nupkg.sha512",
     "C:\\Users\\Foster\\.nuget\\packages\\azure.identity\\1.5.0\\azure.identity.1.5.0.nupkg.sha512",

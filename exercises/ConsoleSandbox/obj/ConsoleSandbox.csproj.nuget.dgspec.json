@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\BWSI\\exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj": {}
+    "d:\\BWSI\\Exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj": {}
   },
   "projects": {
-    "d:\\BWSI\\exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj": {
+    "d:\\BWSI\\Exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\BWSI\\exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj",
+        "projectUniqueName": "d:\\BWSI\\Exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj",
         "projectName": "ConsoleSandbox",
-        "projectPath": "d:\\BWSI\\exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj",
+        "projectPath": "d:\\BWSI\\Exercises\\exercises\\ConsoleSandbox\\ConsoleSandbox.csproj",
         "packagesPath": "C:\\Users\\Foster\\.nuget\\packages\\",
-        "outputPath": "d:\\BWSI\\exercises\\exercises\\ConsoleSandbox\\obj\\",
+        "outputPath": "d:\\BWSI\\Exercises\\exercises\\ConsoleSandbox\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Foster\\AppData\\Roaming\\NuGet\\NuGet.Config",

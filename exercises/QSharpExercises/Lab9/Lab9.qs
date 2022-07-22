@@ -43,8 +43,16 @@ namespace Lab9 {
         // Microsoft.Quantum.Arithmetic.MultiplyByModularInteger() function to
         // do an in-place quantum modular multiplication.
 
+        let leo = LittleEndian(output);
+        let N = Length(input);
+        X(output[Length(output)-1]);
+
         // TODO
-        fail "Not implemented.";
+        for i in 0..N-1 {
+            let qubit = input[i];
+            Controlled MultiplyByModularInteger([qubit], (ExpModI(a, 2^(N-i-1), b), b, leo));
+        }
+
     }
 
 
@@ -88,8 +96,23 @@ namespace Lab9 {
         // you do, run the test again. Also, look at the output of the test to
         // see what values you came up with versus what the system expects.
 
-        // TODO
-        fail "Not implemented.";
+        let outputSize = Ceiling(Lg(IntAsDouble(numberToFactor + 1)));
+        use (input, output) = (Qubit[outputSize * 2], Qubit[outputSize]);
+
+        ApplyToEach(H, input);
+
+        let bei = BigEndian(input);
+
+        Exercise1(guess, numberToFactor, input, output);
+
+        Adjoint QFT(bei);
+
+        let numerator = MeasureInteger(BigEndianAsLittleEndian(bei));
+        let demoninator = 2^Length(input);
+
+        ResetAll(output);
+
+        return (numerator, demoninator);
     }
 
 
@@ -125,8 +148,36 @@ namespace Lab9 {
         denominator : Int,
         denominatorThreshold : Int
     ) : (Int, Int) {
-        // TODO
-        fail "Not implemented.";
+        Message($"Numerator: {numerator} Denominator: {denominator} Threshold: {denominatorThreshold}");
+        if(numerator == 0){
+            return (0, 1);
+        }
+
+        mutable Pi = numerator;
+        mutable Qi = denominator;
+        mutable nvals = [1, 0]; //(n_i, n_i-1)
+        mutable dvals = [0, 1];
+        mutable i = 0;
+        mutable ri = 100;
+        while(dvals[0] < denominatorThreshold and ri != 0){
+            let ai = Pi/Qi;
+            set ri = Pi%Qi;
+            let tempn = nvals[0];
+            let tempd = dvals[0];
+            set nvals w/= 0 <- ai*nvals[0] + nvals[1];
+            set dvals w/= 0 <- ai*dvals[0] + dvals[1];
+            set nvals w/= 1 <- tempn;
+            set dvals w/= 1 <- tempd;
+            set Pi = Qi;
+            set Qi = ri;
+            set i += 1;
+        }
+
+        mutable ind = 0;
+        if(dvals[0] >= denominatorThreshold){
+            set ind = 1;
+        }
+        return (nvals[ind], dvals[ind]);
     }
 
 
@@ -160,8 +211,38 @@ namespace Lab9 {
         // Microsoft.Quantum.Math.GreatestCommonDivisorI()
         // function to calculate the GCD of two numbers.
 
-        // TODO
-        fail "Not implemented.";
+        mutable (_, dOld) = newIOverP(numberToFactor, guess);
+        if(isPeriod(guess, numberToFactor, dOld)){
+            return dOld;
+        }
+        mutable dNew = 0;
+        repeat{
+            let (_, newD) = newIOverP(numberToFactor, guess);
+            set dNew = newD;
+        } until (dOld != dNew);
+        if(isPeriod(guess, numberToFactor, dNew)){
+            return dNew;
+        }
+        repeat{
+            let temp = dNew;
+            set dNew = (dOld*dNew)/GreatestCommonDivisorI(dOld, dNew);
+            set dOld = temp;
+        } until (isPeriod(guess, numberToFactor, dNew));
+        return dNew;
+    }
+
+    operation newIOverP(b: Int, a: Int) : (Int, Int) {
+        repeat{
+            let (xi, twoToTheN) = Exercise2(b, a);
+            if(xi>0){
+                return Exercise3(xi,twoToTheN,b);
+            }
+        } until (false);
+        return (0,0);
+    }
+
+    operation isPeriod(a:Int, b: Int, p: Int) : Bool {
+        return (a^p)%b == 1;
     }
 
 
@@ -192,7 +273,20 @@ namespace Lab9 {
         numberToFactor : Int,
         guess : Int, period : Int
     ) : Int {
-        // TODO
-        fail "Not implemented.";
+
+        if(period%2 !=0){
+            return -1;
+        }
+
+        let (aRaisedToThePOverTwoMinusOne, aRaisedToThePOverTwoPlusOne) = (guess^(period/2)-1, guess^(period/2)+1);
+
+        if(aRaisedToThePOverTwoPlusOne % numberToFactor == 0){
+            return -2;
+        }
+
+        let b0 = GreatestCommonDivisorI(numberToFactor, aRaisedToThePOverTwoPlusOne);
+        //let b1 = GreatestCommonDivisorI(numberToFactor, aRaisedToThePOverTwoMinusOne);
+
+        return b0;
     }
 }

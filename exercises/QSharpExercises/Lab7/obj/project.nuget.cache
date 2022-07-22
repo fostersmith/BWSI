@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wcgP/xgW6VK+O4NWV1joS8GX2WK1QyADIwIkiJgdl6KcS7Nt/dyahG4jjpFyc4idgX0onRD9pxMJkDrjxRF6aw==",
+  "dgSpecHash": "CUNp4ah474JHW57hnSy5Xr8hMedPduM+hHXFz9rpp9TPiWhr1ocjn3zNDZCV+Vy2IpYEmdk9UV3PK3OcDEmDLA==",
   "success": true,
-  "projectFilePath": "d:\\BWSI\\exercises\\exercises\\QSharpExercises\\Lab7\\Lab7.csproj",
+  "projectFilePath": "d:\\BWSI\\Exercises\\exercises\\QSharpExercises\\Lab7\\Lab7.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Foster\\.nuget\\packages\\bond.core.csharp\\9.0.3\\bond.core.csharp.9.0.3.nupkg.sha512",
     "C:\\Users\\Foster\\.nuget\\packages\\bond.csharp\\9.0.3\\bond.csharp.9.0.3.nupkg.sha512",

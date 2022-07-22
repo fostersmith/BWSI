@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ofw5pQu7uvtS16jQ568z+CwXTUvKtlTo6Svr2muyD6SovQr5ta7KtjegVbEvMvvyndKN+VXpWghwt2xVw92OyA==",
+  "dgSpecHash": "Fxh8drWfzd6XEKQsRUBklqIiL1E0pNAF236Ckhdkh/tEC0iveMyeuLwJ7mAFBh8lX36zokaj6w69VjZJAKgXEg==",
   "success": true,
-  "projectFilePath": "d:\\BWSI\\exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj",
+  "projectFilePath": "d:\\BWSI\\Exercises\\exercises\\CSharpExercises\\CSharpExercises.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Foster\\.nuget\\packages\\coverlet.collector\\3.0.3\\coverlet.collector.3.0.3.nupkg.sha512",
     "C:\\Users\\Foster\\.nuget\\packages\\microsoft.codecoverage\\16.9.1\\microsoft.codecoverage.16.9.1.nupkg.sha512",

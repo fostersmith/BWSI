@@ -5,6 +5,7 @@ namespace Lab10 {
 
     open Microsoft.Quantum.Canon;
     open Microsoft.Quantum.Intrinsic;
+    open Microsoft.Quantum.Convert;
 
 
     /// # Summary
@@ -32,8 +33,8 @@ namespace Lab10 {
         // this operation, so it can just be run backwards to decode the
         // logical qubit back into the original three unentangled qubits.
 
-        // TODO
-        fail "Not implemented.";
+        CNOT(original, spares[0]);
+        CNOT(original, spares[1]);
     }
 
 
@@ -65,8 +66,13 @@ namespace Lab10 {
         // makes things easier. Don't forget to reset the qubits you allocate
         // back to the |0> state!
 
-        // TODO
-        fail "Not implemented.";
+        use a = Qubit();
+        ApplyToEach(CNOT(_, a), register[0..1]);
+        let resulta = M(a);
+        Reset(a);
+        ApplyToEach(CNOT(_, a), [register[0], register[2]]);
+        let resultb = M(a);
+        return [resulta, resultb];
     }
 
 
@@ -98,7 +104,9 @@ namespace Lab10 {
         // out to the console. You might want to consider printing the index
         // of the qubit you identified as broken to help with debugging.
 
-        // TODO
-        fail "Not implemented.";
+        let i = ResultArrayAsInt([syndromeMeasurement[1], syndromeMeasurement[0]]) - 1;
+        if(i > -1){
+            X(register[2-i]);
+        }
     }
 }
